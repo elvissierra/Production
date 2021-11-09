@@ -7,11 +7,17 @@ class Material(models.Model):
     item = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
+    def __str__(self):
+        return self.name
+
 
 class Function(models.Model):
     action = models.TextField(null=True, blank=True)
     time = models.TimeField(auto_now_add=True)
     # materials_used = models.ManyToManyField(Material, through="Cost")
+
+    def __str__(self):
+        return super().name
 
 
 class Area(models.Model):

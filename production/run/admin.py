@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import Material, Function, Area
 
-# Register your models here.
+admin.site.register(Material, Function, Area)
