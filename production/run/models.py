@@ -24,3 +24,8 @@ class Area(models.Model):
     department = models.CharField(max_length=50)
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
+
+class Quality(models.Model):
+    products = models.ManyToManyField()
+    time = models.DecimalField()
