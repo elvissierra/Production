@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.fields.related import ManyToManyField
 
 
 class Material(models.Model):
@@ -14,7 +13,7 @@ class Material(models.Model):
 class Function(models.Model):
     action = models.TextField(null=True, blank=True)
     time = models.TimeField(auto_now_add=True)
-    # materials_used = models.ManyToManyField(Material, through="Cost")
+    materials_used = models.ManyToManyField(Material, through="Area")
 
     def __str__(self):
         return super().name
