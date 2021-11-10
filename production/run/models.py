@@ -13,10 +13,12 @@ class Material(models.Model):
 class Function(models.Model):
     action = models.TextField(null=True, blank=True)
     time = models.TimeField(auto_now_add=True)
-    materials_used = models.ManyToManyField(Material, through="Area")
+    materials_used = models.ManyToManyField(
+        "Area", related_name="area_functions", through="Materials"
+    )
 
     def __str__(self):
-        return super().name
+        return self().name
 
 
 class Area(models.Model):
@@ -27,5 +29,5 @@ class Area(models.Model):
 
 
 class Quality(models.Model):
-    products = models.ManyToManyField()
-    time = models.DecimalField()
+    component = models.TextField(blank=True, null=True)
+    time = models.TimeField(auto_now_add=True)

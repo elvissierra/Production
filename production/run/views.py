@@ -1,4 +1,3 @@
-from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from production.run.models import Area, Function, Material, Quality
