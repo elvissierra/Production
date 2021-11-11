@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Members(models.Model):
+    name = models.CharField(max_length=20)
+
+
 class Material(models.Model):
     item = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=5, decimal_places=2)
