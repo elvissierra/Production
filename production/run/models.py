@@ -13,9 +13,9 @@ class Material(models.Model):
 class Function(models.Model):
     action = models.TextField(null=True, blank=True)
     time = models.TimeField(auto_now_add=True)
-    materials_used = models.ManyToManyField(
-        "Area", related_name="area_functions", through="Materials"
-    )
+    # materials_used = models.ManyToManyField(
+    #    "Area", related_name="area_functions", through="Materials"
+    # )
 
     def __str__(self):
         return self().name
