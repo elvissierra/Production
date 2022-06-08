@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from production.run.models import Area, Function, Material, Members, Quality
+from django.views.generic import DeptView, DetailView, ListView
+from .models import Area, Function, Material, Members, Quality
 
 
 class Department(ListView):
@@ -9,21 +9,18 @@ class Department(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context["cost"] = context["price"].()
-        context["time"] = context["time"].()
-        context["members"] = Members.objects.all()
-        context["count"] = context["members"].count()
-        context["function"] = Function.objects.all()
-        context["count"] = context["function"].count()
-        context["materials"] = Material.objects.all()
-        context["count"] = context["materials"].count()
+        context["cost"] = context["price"].filter()
+        context["time"] = context["time"].filter()
+        context["members", "function", "material"] = Members
+        Function
+        Material.objects.all()
+        context["count"] = context["members", "function", "material"].count()
 
         return context
 
 
 class Tools(DetailView):
     model = Material
-    
 
 
 class ToolList(ListView):

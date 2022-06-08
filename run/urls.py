@@ -6,6 +6,5 @@ from .views import ListView
 
 url_patterns = [
     path("admin/", admin.site.urls),
-    path("", include("run.urls")),
     path("department", ListView.as_view(), name="department"),
 ]
