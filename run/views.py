@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.views.generic import DeptView, DetailView, ListView
+from django.views.generic import DetailView, ListView
 from .models import Person, Technicians, Processes, Tools, Department
 
 
