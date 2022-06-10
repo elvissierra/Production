@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import DeptView, DetailView, ListView
-from .models import Area, Function, Material, Members, Quality
+from .models import Person, Technicians, Processes, Tools, Department
 
 
 class Department(ListView):
