@@ -1,1 +1,1 @@
-from .models import Area, Function, Material, Quality
+from .models import Person, Technicians, Processes, Tools, Department
