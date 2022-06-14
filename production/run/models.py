@@ -11,7 +11,7 @@ class Person(models.Model):
 
 
 class Technician(models.Model):
-    name = 
+    name = models.CharField(max_length= 20)
     role = models.CharField(max_length= 20)
 
 
@@ -24,6 +24,7 @@ class Task(models.Model):
 
 class Tools(models.Model):
     name = models.CharField(max_length= 20)
+    description = models.TextField(null= True, blank = True)
     price = models.FloatField()
     quantity = models.IntegerField()
 
