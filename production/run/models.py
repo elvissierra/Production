@@ -1,4 +1,3 @@
-from unicodedata import name
 from unittest import FunctionTestCase
 from django.db import models
 
@@ -8,6 +7,9 @@ from django.db import models
 class Person(models.Model):
     first = models.CharField(max_length= 20)
     last = models.CharField(max_length= 20)
+
+    def full_name(self):
+        return "%s %s" % (self.first, self.last)
 
 
 class Technician(models.Model):
@@ -28,8 +30,9 @@ class Tools(models.Model):
     price = models.FloatField()
     quantity = models.IntegerField()
 
-
+""" need to decide on how to display specific tools for each area
 class Area(models.Model):
-    technician = 
-    tools = 
-    functions = 
+    technician = get name from Technician which gets name from Person
+    tasks = choses through drop down
+    tools = added through tasks
+    """
