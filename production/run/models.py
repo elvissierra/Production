@@ -1,4 +1,3 @@
-from unittest import FunctionTestCase
 from django.db import models
 
 # Create your models here.
