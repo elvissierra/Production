@@ -2,3 +2,4 @@ prod/
 dbqueries.py
 settings.py
 tests.py
+secrets.py

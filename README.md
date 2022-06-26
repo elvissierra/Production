@@ -8,3 +8,4 @@ JavaScript(ajax)
 Python 3
 Django
 HTML CSS
+MySQL
