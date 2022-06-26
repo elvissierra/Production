@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import secrets
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-euh@0dc$nkq%8zl+^pbvc3)5$o_8)s76e^%3u(g@v3t(%vmycq'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,12 +78,12 @@ WSGI_APPLICATION = 'production.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE'  : f'{secrets.ENGINE}', 
-        'NAME'    : f'{secrets.NAME}',                 
-        'USER'    : f'{secrets.USER}',                    
-        'PASSWORD': f'{secrets.PASSWORD}',             
-        'HOST'    : f'{secrets.HOST}',               
-        'PORT'    : f'{secrets.PORT}',
+        'ENGINE'  : 'django.db.backends.mysql',
+        'NAME'    : 'productionDB',               
+        'USER'    : config()
+        'PASSWORD':
+        'HOST'    :
+        'PORT'    :
     }
 }
 

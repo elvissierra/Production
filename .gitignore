@@ -3,3 +3,6 @@ dbqueries.py
 settings.py
 tests.py
 secrets.py
+queries.py
+.env
+productionDB.session.sql
