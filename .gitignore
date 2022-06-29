@@ -6,3 +6,6 @@ secrets.py
 queries.py
 .env
 productionDB.session.sql
+settings
+dev_settings.py
+prod_settings.py
