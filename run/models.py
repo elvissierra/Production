@@ -1,7 +1,10 @@
 from django.db import models
 
 # Create your models here.
-
+class login():
+class register():
+class logout():
+class map_overview():
 
 class Person(models.Model):
     first = models.CharField(max_length= 20)
@@ -29,9 +32,8 @@ class Tools(models.Model):
     price = models.FloatField()
     quantity = models.IntegerField()
 
-""" need to decide on how to display specific tools for each area
+
 class Area(models.Model):
-    technician = get name from Technician which gets name from Person
-    tasks = choses through drop down
-    tools = added through tasks
-    """
+    technician = 
+    tasks = 
+    tools = 
