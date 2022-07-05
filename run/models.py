@@ -1,10 +1,5 @@
 from django.db import models
 
-# Create your models here.
-#class login():
-#class register():
-#class logout():
-#class map_overview():
 
 class Person(models.Model):
     first = models.CharField(max_length= 20)
