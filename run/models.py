@@ -15,7 +15,7 @@ class Person(models.Model):
 
 
 class Technician(models.Model):
-    tech = models.ForeignKey(Person, on_delete=models.CASCADE)
+    tech = models.ForeignKey(Person, on_delete=models.CASCADE, default = True)
     role = models.CharField(max_length= 20)
 
 
