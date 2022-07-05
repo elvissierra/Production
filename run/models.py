@@ -1,21 +1,21 @@
 from django.db import models
 
 # Create your models here.
-class login():
-class register():
-class logout():
-class map_overview():
+#class login():
+#class register():
+#class logout():
+#class map_overview():
 
 class Person(models.Model):
     first = models.CharField(max_length= 20)
     last = models.CharField(max_length= 20)
 
     def full_name(self):
-        return "%s %s" % (self.first, self.last)
+        return "{} {}" .format(self.first, self.last)
 
 
 class Technician(models.Model):
-    name = models.CharField(max_length= 20)
+    tech = models.ForeignKey(Person, on_delete=models.CASCADE)
     role = models.CharField(max_length= 20)
 
 
@@ -34,6 +34,6 @@ class Tools(models.Model):
 
 
 class Area(models.Model):
-    technician = 
-    tasks = 
-    tools = 
+    technician = models.ForeignKey(Technician, on_delete=models.CASCADE)
+    tasks = models.ManyToManyField(Task)
+    tools = models.ManyToManyField(Tools)
