@@ -19,7 +19,7 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy()#here i need to direct it to the main page
 
-class RegisterPage(FormView):
+class RegisterView(FormView):
     template_name = 'run/register.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
@@ -29,9 +29,23 @@ class RegisterPage(FormView):
         user = form.save()
         if user is not None:
             login(self.request, user)
-        return super(RegisterPage, self).form_valid(form)
+        return super(RegisterView, self).form_valid(form)
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('')#direct to main
-        return super(RegisterPage, self).get(*args, **kwargs)
+        return super(RegisterView, self).get(*args, **kwargs)
+
+class TechPage():
+    #view all technicians in dept
+
+class ToolPage():
+    #display all tools and their info
+
+class AreaPage():
+    #display each area/ simply a visual of dept
+        #functions- needs time/tools/technicians
+
+class BackendArea():
+    #displays the cost for each function --> area --> dept total cost
+    #MAIN ATTRACTION
