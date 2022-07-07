@@ -11,7 +11,7 @@ class Person(models.Model):
 
 class Technician(models.Model):
     tech = models.ForeignKey(Person, on_delete=models.CASCADE, default = True)
-    tech_id = models.IntegerField()
+    id = models.IntegerField(primary_key= True)
     role = models.CharField(max_length= 20)
 
 
