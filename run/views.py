@@ -3,12 +3,11 @@ from django.contrib.auth import login
 from django.views.generic.edit import FormView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
+from run.forms import PersonsForm
 
 from django.urls import reverse_lazy
 
 from .models import Person, Task, Technician, Tools, Area
-
-
 
 
 class CustomLoginView(LoginView):
@@ -17,9 +16,9 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy()#here i need to direct it to the main page
+        return reverse_lazy('main')#here i need to direct it to the main page
 
-class RegisterView(FormView):
+"""class RegisterView(FormView):
     template_name = 'run/register.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
@@ -34,9 +33,25 @@ class RegisterView(FormView):
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('')#direct to main
-        return super(RegisterView, self).get(*args, **kwargs)
+        return super(RegisterView, self).get(*args, **kwargs)"""
 
-class TechPage():
+class PersonsPage():
+    template_name = 'run/register_persons.html'
+    context_object_name = 'persons'
+
+    def reg_emp(request):
+        if request.method == 'POST':
+            form = PersonsForm(request.POST)
+            if form.is_valid():
+                try:
+                    form.save()
+                    return redirect('/main')
+                except:
+                    pass
+        else:
+            form = PersonsForm()
+        return render(request, '---', {'form':form})
+
     #view all technicians in dept
 
 class ToolPage():
