@@ -1,9 +1,12 @@
+from msilib.schema import ListView
 from django.shortcuts import redirect, render
 from django.contrib.auth import login
 from django.views.generic.edit import FormView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
 from run.forms import PersonsForm
+from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.urls import reverse_lazy
 
@@ -36,8 +39,9 @@ class RegisterView(FormView):
             return redirect('')#direct to main
         return super(RegisterView, self).get(*args, **kwargs)
 
+
 #add new people
-class PersonsPage():
+class PersonsPage(LoginRequiredMixin, ListView):
     template_name = 'run/register_persons.html'
     context_object_name = 'persons'
 
