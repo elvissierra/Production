@@ -41,7 +41,7 @@ class RegisterView(FormView):
 
 
 #add new people
-class PersonsPage(LoginRequiredMixin, ListView):
+class PersonsPage(LoginRequiredMixin):
     template_name = 'run/register_persons.html'
     context_object_name = 'persons'
 
@@ -58,9 +58,10 @@ class PersonsPage(LoginRequiredMixin, ListView):
             form = PersonsForm()
         return render(request, '---', {'form':form})
 
-"""#view all technicians-> info and what area they belong to
-class TechPage():
+#view all technicians-> info and what area they belong to
+class TechPage(ListView):
 
+"""
 #display all tools and their info-> cost/ name/ areas their used/ description
 class ToolPage():
 
