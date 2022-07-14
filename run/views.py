@@ -1,3 +1,4 @@
+from dataclasses import fields
 from msilib.schema import ListView
 from pyexpat import model
 from urllib import request
@@ -24,7 +25,7 @@ class CustomLoginView(LoginView):
         return reverse_lazy('main')#here i need to direct it to the main page
 
 #register new supervisors/managers
-class RegisterView(FormView):
+class RegisterSupView(FormView):
     template_name = 'run/register_super.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
@@ -34,26 +35,23 @@ class RegisterView(FormView):
         user = form.save()
         if user is not None:
             login(self.request, user)
-        return super(RegisterView, self).form_valid(form)
+        return super(RegisterSupView, self).form_valid(form)
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('main')#direct to main
-        return super(RegisterView, self).get(*args, **kwargs)
+        return super(RegisterSupView, self).get(*args, **kwargs)
 
 
 #add new people
-class RegisterPersons(LoginRequiredMixin, FormView):
-    template_name = 'run/register_persons.html'
-    form_class = UserCreationForm
-    redirect_authenticated_user = True
+class RegisterPerView(LoginRequiredMixin, FormView):
+    model = Person
+    fields = '__all__'
     success_url = reverse_lazy('register_persons')
 
-    def valid_register(self, form):
-        user = form.save()
-        if user is not None:
-            login(self.request, user)
-        return super(RegisterPersons, self).valid_register(form)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(RegisterPerView, self).form_valid(form)
     
 """
 
