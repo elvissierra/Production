@@ -47,11 +47,10 @@ class RegisterSupView(FormView):
 class RegisterPerView(LoginRequiredMixin, FormView):
     model = Person
     fields = '__all__'
-    success_url = reverse_lazy('register_persons')
-
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super(RegisterPerView, self).form_valid(form)
+        return super().form_valid(form)
     
 """
 
