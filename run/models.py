@@ -4,6 +4,7 @@ from django.db import models
 class Person(models.Model):
     first = models.CharField(max_length= 20)
     last = models.CharField(max_length= 20)
+    id = models.BigAutoField(primary_key= True)
 
     def full_name(self):
         return "{}{}".format(self.first, self.last)
@@ -13,7 +14,6 @@ class Person(models.Model):
 
 class Technician(models.Model):
     tech = models.ForeignKey(Person, on_delete=models.CASCADE)
-    id = models.AutoField(primary_key= True)
     role = models.CharField(max_length= 20)
     
     class Meta:
@@ -28,7 +28,7 @@ class Tools(models.Model):
     
     class Meta:
         db_table = "tools"
-        
+
 
 class Task(models.Model):
     name = models.CharField(max_length= 20)
